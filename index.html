@@ -1,0 +1,489 @@
+<!-- Main HTML file for Weirdo v2 project -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icon -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <!-- AlpineJs for button -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Tailwind animation -->
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
+
+  <style>
+    /* Static gradient background */
+    .gradient-bg {
+      
+      background: linear-gradient(90deg, rgba(255, 153, 153, 1) 0%, rgba(255, 204, 153, 1) 50%, rgba(153, 204, 255, 1) 100%);
+      
+
+    }
+
+    
+  </style>
+  <script src="sc/automate.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased bg-gray-50">
+
+  <!-- Sticky Header -->
+<header class="bg-white shadow-md rounded-b-3xl sticky top-0 z-50" x-data="{ open: false }">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="img/pfp.png" alt="Logo" class="h-8 w-8 mr-3 rounded-full">
+        <span class="text-xl font-semibold text-gray-800">Portofolio</span>
+      </div>
+      
+      <div class="flex items-center space-x-4 relative">
+        <div class="relative">
+          <!-- Grid icon with hover and click effects -->
+          <div 
+            @click="open = !open"
+            class="p-2 rounded-full hover:bg-gray-100 cursor-pointer transition-colors duration-200"
+          >
+            <i class="fas fa-th text-gray-600 text-xl"></i>
+          </div>
+  
+          <!-- Dropdown menu -->
+          <div 
+            x-show="open"
+            @click.away="open = false"
+            class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100"
+            style="display: none;"
+          >
+            <div class="p-4 grid grid-cols-3 gap-4">
+              <!-- Menu items -->
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#skills'">
+                <div class="flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"></path>
+                    </svg>
+                  <span class="text-xs text-gray-600">Skills</span>
+                </div>
+              </button>
+              
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#projects'">
+                <div class="flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"></path>
+                        <path d="M17.64 15 22 10.64"></path>
+                        <path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"></path>
+                    </svg>
+                  <span class="text-xs text-gray-600">Projects</span>
+                </div>
+              </button>
+  
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#education'">
+                <div class="flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  <span class="text-xs text-gray-600">Education</span>
+                </div>
+              </button>
+  
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#certificates'">
+                <div class="flex flex-col items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                    <path d="M2.06 14.68a1 1 0 0 0 .46.6l1.91 1.11v2.2a1 1 0 0 0 1 1h2.2l1.11 1.91a1 1 0 0 0 .86.5 1 1 0 0 0 .51-.14l1.9-1.1 1.91 1.1a1 1 0 0 0 1.37-.36l1.1-1.91h2.2a1 1 0 0 0 1-1v-2.2l1.91-1.11a1 1 0 0 0 .37-1.36L20.76 12l1.11-1.91a1 1 0 0 0-.37-1.36l-1.91-1.1v-2.2a1 1 0 0 0-1-1h-2.2l-1.1-1.91a1 1 0 0 0-.61-.46 1 1 0 0 0-.76.1L12 3.26l-1.9-1.1a1 1 0 0 0-1.36.36L7.63 4.43h-2.2a1 1 0 0 0-1 1v2.2l-1.9 1.1a1 1 0 0 0-.37 1.37l1.1 1.9-1.1 1.91a1 1 0 0 0-.1.77zm3.22-3.17L4.39 10l1.55-.9a1 1 0 0 0 .49-.86V6.43h1.78a1 1 0 0 0 .87-.5L10 4.39l1.54.89a1 1 0 0 0 1 0l1.55-.89.91 1.54a1 1 0 0 0 .87.5h1.77v1.78a1 1 0 0 0 .5.86l1.54.9-.89 1.54a1 1 0 0 0 0 1l.89 1.54-1.54.9a1 1 0 0 0-.5.86v1.78h-1.83a1 1 0 0 0-.86.5l-.89 1.54-1.55-.89a1 1 0 0 0-1 0l-1.51.89-.89-1.54a1 1 0 0 0-.87-.5H6.43v-1.78a1 1 0 0 0-.49-.81l-1.55-.9.89-1.54a1 1 0 0 0 0-1.05z">
+                    </path>
+                  </svg>
+                  <span class="text-xs text-gray-600">Certificates</span>
+                </div>
+              </button>
+
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#contacs'">
+                <div class="flex flex-col items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                    <path d="M21 2H6a2 2 0 0 0-2 2v3H2v2h2v2H2v2h2v2H2v2h2v3a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-8 2.999c1.648 0 3 1.351 3 3A3.012 3.012 0 0 1 13 11c-1.647 0-3-1.353-3-3.001 0-1.649 1.353-3 3-3zM19 18H7v-.75c0-2.219 2.705-4.5 6-4.5s6 2.281 6 4.5V18z">
+                    </path>
+                  </svg>
+                  <span class="text-xs text-gray-600">Contacts</span>
+                </div>
+              </button>
+
+              <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="window.location.href='#profile'">
+                <div class="flex flex-col items-center">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span class="text-xs text-gray-600">Profile</span>
+                </div>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="gradient-bg relative -mt-20 flex items-center justify-center min-h-dvh" id="home">
+    
+    <div class="text-center">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+      <h1 class="text-[1.1rem] inline-flex justify-between items-center text-light-gray-primary py-[11px] px-8 w-fit font-semibold rounded-3xl bg-[#0001] dark:bg-[#fff1] dark:text-dark-texto-secondary">
+        Konnichiwa! <span class="hi inline">👋</span> I'm AufaRakha
+      </h1> 
+    </div>
+    
+      
+      <h1 class="flex flex-col gap-y-2 text-4xl md:text-5xl font-bold text-gray-800 mb-6" style="color: rgb(255, 255, 255);">Android Reverse Engineering Specialist 
+        <br>
+        <span class="text-pr-sect">&</span>
+        <span class="text-pr-sect">Web App Developer</span> 
+      </h1>
+
+      <div class="flex justify-center">
+        <ul class="gap-3 flex justify-between items-center sm:gap-12 text-light-gray-primary dark:text-dark-gray-primary w-[calc(100dvw-5rem)] sm:w-fit">
+          <li class="flex flex-col sm:flex-row items-center gap-2">
+              <span class="flex items-center font-bold bg-[#0001] dark:bg-[#fff1] py-1 px-3 rounded-xl" id="experenceYear">Calculating...</span>
+              <span class="text-[0.71rem] sm:text-[0.81rem] leading-[1] text-center sm:text-left">
+                  Years of<br>experience
+              </span>
+          </li>
+          <li class="h-8 border-r-[1px] border-dashed border-light-gray-secondary dark:border-dark-gray-secondary"></li>
+          <li class="flex flex-col sm:flex-row items-center gap-2">
+              <span class="flex items-center font-bold bg-[#0001] dark:bg-[#fff1] py-1 px-3 rounded-xl" id="commit-count">Calculating...</span>
+              <span class="text-[0.71rem] sm:text-[0.81rem] leading-[1] text-center sm:text-left">
+                  Commits<br>pushed
+              </span>
+          </li>
+          <li class="h-8 border-r-[1px] border-dashed border-light-gray-secondary dark:border-dark-gray-secondary"></li>
+          <li class="flex flex-col sm:flex-row items-center gap-2">
+              <span class="flex items-center font-bold bg-[#0001] dark:bg-[#fff1] py-1 px-3 rounded-xl">1k+</span>
+              <span class="text-[0.71rem] sm:text-[0.81rem] leading-[1] text-center sm:text-left">
+                  Cups of coffee<br>consumed
+              </span>
+          </li>
+        </ul>
+      </div>
+     
+
+    <br>
+
+
+    <button class="mx-auto w-fit justify-center bg-black text-white py-3 px-6 rounded-full flex items-center gap-1 sm:gap-2 text-lg hover:bg-[linear-gradient(90deg,_rgba(255,_153,_153,_1)_0%,_rgba(153,_204,_255,_1)_100%)] hover:text-black transition"
+    onclick="window.location.href='other/CV_AR.pdf'" download="other/CV_AR.pdf">
+        <svg width="26" height="26" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <line x1="10" y1="9" x2="8" y2="9"></line>
+        </svg>
+      <span>Download CV</span>
+    </button>
+
+  </main>
+
+<!-- Features Section -->
+<section class="bg-gradient-to-b from-blue-50 to-white py-12 relative rounded-t-3xl -mt-20 z-10">
+
+  <div class="container mx-auto px-4" id="profile">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] text-center mb-12">
+        About me<span class="text-primary">.</span>
+    </h1>
+
+    <section class="flex flex-col-reverse sm:flex-row pt-12 pb-20 items-center gap-12">
+        <article class="flex flex-col gap-10 w-full max-w-2xl mx-auto">
+            <div class="flex flex-col gap-6 text-[1.1rem] sm:text-base text-light-texto-secondary dark:text-dark-texto-secondary text-justify sm:text-left">
+                <p class="max-w-prose mx-auto leading-relaxed">
+                    A first-year student at Telkom Purwokerto Vocational School by day. I’ve been
+                    reverse-engineering games since I was 12—snooping through memory addresses, hex-patching save files,
+                    and modding libraries just to see how things tick. These days, I’m channeling that same curiosity into
+                    building websites, with a heavy focus on crafting sleek backends that actually work.
+                </p>
+                <p class="max-w-prose mx-auto leading-relaxed">
+                    I’m currently working on an Android anti-cheating tool for schools—imagine AI 
+                    that flags sneaky glances during exams,live streams student screens to teachers, 
+                    and locks down tests with encryption.It’s like using my old reverse-engineering tricks,
+                    but this time, I’m the one setting the traps.
+                </p>
+            </div>
+        </article>
+        <img class="rounded-full h-[170px] w-[170px] sm:w-[200px] sm:h-[200px] shrink-0" src="img/pfp.png" alt="AufaRakha - Mobile Developer" loading="lazy">
+    </section>
+  </div>
+
+  <!-- Features Section -->
+
+  <div class="container mx-auto px-4" id="projects">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] text-center">
+        Projects<span class="text-primary">.</span>
+    </h1>
+    
+    <br>
+
+    
+
+    <div id="features-container" class="flex flex-wrap justify-center gap-6"></div>
+
+  </div>
+  
+  <br>
+
+  <!-- Skills Section -->
+  <section class="skills-section" id="skills">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] justify-center text-center">
+        Skills<span class="text-primary">.</span>
+    </h1>
+    <div class="skills-container">
+        <article class="skills-column">
+            <h2>Technologies and tools</h2>
+            <ul class="skills-list hard">
+                <li class="tech-item">
+                    <img src="icons/c++.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">C++</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/c.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">C</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/csharp.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">C#</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/python.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Python</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/javascript.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">JavaScript</span>
+                </li>
+                <li class="tech-item">
+                  <img src="icons/java.svg" alt="" height="auto" width="45%" loading="lazy">
+                  <span class="skill-name">Java</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/html.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">HTML</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/css.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">CSS</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/mysql.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">MySQL</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/tailwind.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Tailwind CSS</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/git.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Git</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/github.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">GitHub</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/ida.ico" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">IDA</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/android-studio.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Android Studio</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/vscode.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">VS Code</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/visual-studio.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Visual Studio</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/termux.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Termux</span>
+                </li>
+                <li class="tech-item">
+                  <img src="icons/bash.svg" alt="" height="auto" width="45%" loading="lazy">
+                  <span class="skill-name">Bash</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/linux.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Linux</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/android.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Android</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/figma.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Figma</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/canva.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Canva</span>
+                </li>
+                <li class="tech-item">
+                  <img src="icons/adobeillust.svg" alt="" height="auto" width="45%" loading="lazy">
+                  <span class="skill-name">Adobe Illustrator</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/chrome.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Chrome DevTools</span>
+                </li>
+                <li class="tech-item">
+                    <img src="icons/magisk.svg" alt="" height="auto" width="45%" loading="lazy">
+                    <span class="skill-name">Magisk</span>
+                </li>
+                <li class="tech-item">
+                  <img src="icons/office-word.svg" alt="" height="auto" width="45%" loading="lazy">
+                  <span class="skill-name">Word</span>
+                </li>
+
+                
+            </ul>
+        </article>
+    </div>
+  </section>
+
+  <br>
+
+  <!-- Cert Section -->
+  <section class="container mx-auto px-4" id="certificates">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] justify-center text-center">
+      Sertifikat<span class="text-primary">.</span>
+    </h1>
+
+    <br>
+
+    <div id="certs-container"></div>
+  </section>
+
+  <br>
+
+  <!-- Edu Section -->
+  <section class="container mx-auto px-4" id="education">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] justify-center text-center">
+      Education<span class="text-primary">.</span>
+    </h1>
+
+    <br>
+
+    <div class="mx-auto w-fit justify-center grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
+        <article class="flex gap-4 education-card">
+            <div class="flex justify-center items-center bg-white object-contain rounded-3xl overflow-hidden aspect-square w-[90px] h-[90px] min-w-[90px] sm:w-[110px] sm:h-[110px] sm:min-w-[110px]">
+                <img class="w-full h-auto" src="img/smk-telkom-pwt.png" alt="Picture of Software and Game development degree" loading="lazy">
+            </div>
+            <div class="flex flex-col gap-3">
+                <div class="flex flex-col">
+                    <small class="text-[0.77rem] text-light-gray-primary dark:text-dark-gray-primary">Degree:</small>
+                    <h1 class="text-light-texto-primary dark:text-dark-texto-primary font-bold leading-[1.1]">Software and Game development</h1>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[0.9rem] text-light-gray-primary dark:text-dark-gray-primary">June 2023 - Present</span>
+                    <span class="text-[0.9rem] text-light-texto-secondary dark:text-dark-texto-secondary leading-[1.1]">Telkom Purwokerto Vocational School</span>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="flex justify-center"></div>
+  </section>
+
+  <br>
+
+  <section class="container mx-auto px-4" id="contacs">
+    <h1 class="font-black text-light-texto-primary dark:text-dark-texto-primary text-[2.5rem] justify-center text-center">
+      Contacts<span class="text-primary">.</span>
+    </h1>
+
+    <br>
+
+    <ul class="contact-links flex flex-col sm:flex-row flex-wrap gap-8 justify-center">
+        <li class="flex items-center gap-2 overflow-hidden">
+            <svg class="h-auto w-[53px] min-w-[53px] text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <div class="flex flex-col justify-center">
+                <small class="text-light-gray-primary dark:text-dark-gray-primary font-medium">Send me an email:</small>
+                <a class="font-bold text-light-texto-primary dark:text-dark-texto-primary text-[1.1rem] hover:cursor-pointer hover:underline" href="mailto:aufarakha434@gmail.com">aufarakha434@gmail.com</a>
+            </div>
+        </li>
+        <li class="flex items-center gap-2 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="#555">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path>
+            </svg>
+            <div class="flex flex-col justify-center">
+                <small class="text-light-gray-primary dark:text-dark-gray-primary font-medium">My Github account:</small>
+                <a class="font-bold text-light-texto-primary dark:text-dark-texto-primary text-[1.1rem] hover:cursor-pointer hover:underline" href="https://github.com/aufarakha" target="_blank" rel="noreferrer">/aufarakha</a>
+            </div>
+        </li>
+        
+        <li class="flex items-center gap-2 overflow-hidden">
+            <svg id="Livello_1" class="h-auto w-[53px] min-w-[53px] text-primary" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240">
+                <defs>
+                    <linearGradient id="linear-gradient" x1="120" y1="240" x2="120" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#1d93d2"></stop>
+                        <stop offset="1" stop-color="#38b0e3"></stop>
+                    </linearGradient>
+                </defs>
+                <title>Telegram_logo</title>
+                <circle cx="120" cy="120" r="120" fill="url(#linear-gradient)"></circle>
+                <path d="M81.229,128.772l14.237,39.406s1.78,3.687,3.686,3.687,30.255-29.492,30.255-29.492l31.525-60.89L81.737,118.6Z" fill="#c8daea"></path>
+                <path d="M100.106,138.878l-2.733,29.046s-1.144,8.9,7.754,0,17.415-15.763,17.415-15.763" fill="#a9c6d8"></path>
+                <path d="M81.486,130.178,52.2,120.636s-3.5-1.42-2.373-4.64c.232-.664.7-1.229,2.1-2.2,6.489-4.523,120.106-45.36,120.106-45.36s3.208-1.081,5.1-.362a2.766,2.766,0,0,1,1.885,2.055,9.357,9.357,0,0,1,.254,2.585c-.009.752-.1,1.449-.169,2.542-.692,11.165-21.4,94.493-21.4,94.493s-1.239,4.876-5.678,5.043A8.13,8.13,0,0,1,146.1,172.5c-8.711-7.493-38.819-27.727-45.472-32.177a1.27,1.27,0,0,1-.546-.9c-.093-.469.417-1.05.417-1.05s52.426-46.6,53.821-51.492c.108-.379-.3-.566-.848-.4-3.482,1.281-63.844,39.4-70.506,43.607A3.21,3.21,0,0,1,81.486,130.178Z" fill="#fff"></path>
+            </svg>
+            <div class="flex flex-col justify-center">
+                <small class="text-light-gray-primary dark:text-dark-gray-primary font-medium">My Telegram Channel:</small>
+                <a class="font-bold text-light-texto-primary dark:text-dark-texto-primary text-[1.1rem] hover:cursor-pointer hover:underline" href="https://t.me/es_modz" target="_blank" rel="noreferrer">@es_modz</a>
+            </div>
+        </li>
+    </ul>
+  </section>
+
+    <hr class="w-full my-12 border-gray-200 mx-auto">
+
+    <footer class="flex flex-col border-t-[1px] border-[#0001] dark:border-[#ffffff15] py-10 gap-14 mx-auto max-w-7xl px-4">
+        <section class="flex flex-col sm:flex-row sm:items-center gap-8 sm:justify-between">
+            <div class="flex gap-2 items-center font-bold text-light-texto-primary dark:text-dark-texto-primary">
+                <img class="h-[27px] w-[27px] mt-2 rounded-lg" type="image/webp" src="img/pfp.png" alt="Butterfly Logo">
+            </div>
+            <ul class="flex flex-col sm:flex-row gap-3 sm:gap-8">
+                <li>
+                    <a class="text-light-texto-secondary dark:text-dark-texto-secondary font-medium text-[0.91rem] hover:text-light-texto-primary dark:hover:text-dark-texto-primary transition-colors hover:underline" href="#home">Start</a>
+                </li>
+                <li>
+                    <a class="text-light-texto-secondary dark:text-dark-texto-secondary font-medium text-[0.91rem] hover:text-light-texto-primary dark:hover:text-dark-texto-primary transition-colors hover:underline" href="#skills">Skills</a>
+                </li>
+                <li>
+                    <a class="text-light-texto-secondary dark:text-dark-texto-secondary font-medium text-[0.91rem] hover:text-light-texto-primary dark:hover:text-dark-texto-primary transition-colors hover:underline" href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a class="text-light-texto-secondary dark:text-dark-texto-secondary font-medium text-[0.91rem] hover:text-light-texto-primary dark:hover:text-dark-texto-primary transition-colors hover:underline" href="#education">Education</a>
+                </li>
+                <li>
+                    <a class="text-light-texto-secondary dark:text-dark-texto-secondary font-medium text-[0.91rem] hover:text-light-texto-primary dark:hover:text-dark-texto-primary transition-colors hover:underline" href="#certificates">Certificates</a>
+                </li>
+            </ul>
+        </section>
+        <section class="flex flex-col sm:flex-row sm:items-center gap-8 sm:justify-between">
+            <small class="text-light-gray-primary dark:text-dark-gray-primary text-[0.75rem] max-w-md md:text-left sm:text-end">
+                Built with care (and caffeine). Let’s connect if it resonates! <a class="text-light-texto-primary dark:text-dark-texto-primary hover:underline" href="https://github.com/aufarakha/" alt="Aufa Rakha's portofolio website" target="_blank">GitHub</a>.
+            </small>
+        </section>
+    </footer>
+
+</section>
+
+</body>
+</html>

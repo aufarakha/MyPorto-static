@@ -1,0 +1,135 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.text-primary {
+    --tw-text-opacity: 1;
+    color: rgb(0 111 255)
+}
+
+.text-pr-sect {
+    --tw-text-opacity: 1;
+    color: rgb(11, 40, 75)
+}
+
+img,svg {
+    pointer-events: none
+}
+
+.skills-section {
+    padding: 3rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text inside the container */
+}
+
+.skills-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}
+
+.skills-column h2 {
+    font-size: 1.2rem;
+    color: var(--gray)
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* This creates 8 equal columns after that create new line*/
+    gap: 1rem;
+    width: 100%;
+}
+
+
+.skills-list>li {
+    aspect-ratio: 1/1;
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    background-color: var(--hover);
+    border-radius: 13px
+}
+
+.skills-list.soft>li {
+    height: 5.5rem;
+    width: 5.5rem;
+    padding: .5rem;
+    font-size: .75rem
+}
+
+.skills-list.hard>li {
+    height: 5.5rem;
+    width: 5.5rem;
+    padding: .5rem;
+    font-size: .8rem;
+    border-radius: 10px;
+    color: var(--text_2);
+    background-color: #0000000b
+}
+
+body.dark .skills-list.hard>li {
+    background-color: #ffffff0d
+}
+
+@media screen and (min-width: 500px) and (max-width: 599px) {
+    .skills-container {
+        flex-direction:row;
+    }
+
+    .skills-list {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on wider screens */
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .tech-item {
+        position:relative;
+        width: 5.5rem;
+        height: 5.5rem;
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: var(--hover);
+        border-radius: 13px;
+        overflow: hidden
+    }
+
+    .tech-item img {
+        position: absolute;
+        -o-object-fit: contain;
+        object-fit: contain;
+        transition: opacity .2s ease-in-out,transform .2s ease-in-out
+    }
+
+    .skill-name {
+        position: relative;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+        z-index: 1
+    }
+
+    .skills-list li:hover .skill-name {
+        opacity: 1
+    }
+
+    .skills-list li:hover img {
+        opacity: .3;
+        transform: scale(1.5) translate(50%,50%)
+    }
+}
