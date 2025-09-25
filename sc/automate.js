@@ -70,7 +70,7 @@ function renderFeatures(features, scale = 1) {
             <h3 class="text-xl font-bold text-gray-800 mb-3 max-w-md">${cert.title}</h3>
             <p class="text-gray-600 mb-4 max-w-md">${cert.description}</p>
             <a href="${cert.readMoreLink}" target="_blank" class="inline-block bg-blue-500 text-white py-2 px-4 rounded-full shadow hover:bg-blue-600 transition">
-              Lihat selengkapnya
+              View more
               <i class="fas fa-external-link-alt ml-2"></i>
             </a>
           </div>
@@ -125,5 +125,6 @@ const fetchAccountAge = async () => {
     .catch(error => {
       console.error("Error loading data:", error);
     });
+
 
     window.dispatchEvent(new Event('resize'));
