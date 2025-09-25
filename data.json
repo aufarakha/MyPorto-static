@@ -6,7 +6,7 @@
         "description": "Modify thermal configuration files (e.g., thermal-normal.conf) used by mi-thermald on Xiaomi, Redmi, and Poco devices. This tool allows you to decrypt configurations for editing and re-encrypt them for device compatibility, as mi-thermald only accepts encrypted files.",
         "learnMoreLink": "https://github.com/aufarakha/mi-thermal-py-crypt/tree/main",
         "buttons": [
-          { "text": "Kunjungi", "type": "primary" }
+          { "text": "View", "type": "primary" }
         ]
       },
       {
@@ -15,7 +15,7 @@
         "description": "A hyper-detailed web-based interface focused on anticheat monitoring and policy enforcement ,designed for admins and security teams to oversee device integrity. The design emphasizes usability, security, and real-time oversight.",
         "learnMoreLink": "https://www.figma.com/design/Z2CfpQL1gZ9HD5yvceOuKS/PTS?node-id=0-1&t=Fx1qEfrbwNgDPjBs-1",
         "buttons": [
-          { "text": "Kunjungi", "type": "primary" }
+          { "text": "View", "type": "primary" }
         ]
       }
     ],
@@ -23,10 +23,11 @@
       {
         "image": "img/cert_visualisasi_data.jpg",
         "date": "Monday, December 9, 2024",
-        "title": "Sertifikat Visualisasi Data",
-        "description": "Pengakuan atas kemampuan menerjemahkan data mentah menjadi visual yang bernilai strategis. Melalui pelatihan ini, saya menguasai teknik visualisasi untuk meningkatkan kejelasan informasi dan mendukung komunikasi efektif dalam proyek berbasis data.",
+        "title": "Data Visualization Certificate",
+        "description": "Recognition for my ability to translate raw data into strategically valuable visuals. Through this training, I mastered visualization techniques to enhance information clarity and support effective communication in data-driven projects.",
         "readMoreLink": "https://www.dicoding.com/dicodingassets/coursecertificate/e4fbf64d140b3b1fcba67dfa669a1e90f6295095/view"
       }
     ]
   }
+
   
