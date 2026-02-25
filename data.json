@@ -17,7 +17,43 @@
         "buttons": [
           { "text": "View", "type": "primary" }
         ]
-      }
+      },
+      {
+        "image": "img/pr_3.jpg",
+        "title": "Bank Simulation",
+        "description": "A modern banking web application built with Flask, featuring user authentication, money transfers, transaction history, and admin panel.",
+        "learnMoreLink": "https://github.com/aufarakha/Flask-Cloud-Bank",
+        "buttons": [
+          { "text": "View", "type": "primary" }
+        ]
+      },
+      {
+        "image": "img/pr_4.jpg",
+        "title": "Local LLM Chat",
+        "description": "A Windows Forms application for running local large language models (LLMs) using LLamaSharp. This tool allows you to load a GGUF model file and chat with it through a simple and interactive GUI.",
+        "learnMoreLink": "https://github.com/aufarakha/Local-LLM-Chat-Csharp",
+        "buttons": [
+          { "text": "View", "type": "primary" }
+        ]
+      },
+        {
+        "image": "img/pr_5.webp",
+        "title": "Game Menu Abyssothymia",
+        "description": "My first game menu created using blender for 3d and adobe illustrator for text",
+        "learnMoreLink": "https://dribbble.com/shots/25749568-Abyssothymia-My-first-game-menu",
+        "buttons": [
+          { "text": "View", "type": "primary" }
+        ]
+      },
+        {
+        "image": "img/pr_6.webp",
+        "title": "Wallpaper lockscreen",
+        "description": "LockScreen Windows Created using Adobe Illustrator",
+        "learnMoreLink": "https://dribbble.com/shots/26713405-LockScreen-Windows-Created-using-Adobe-Illustrator",
+        "buttons": [
+          { "text": "View", "type": "primary" }
+        ]
+      },
     ],
     "certs": [
       {
@@ -26,8 +62,16 @@
         "title": "Data Visualization Certificate",
         "description": "Recognition for my ability to translate raw data into strategically valuable visuals. Through this training, I mastered visualization techniques to enhance information clarity and support effective communication in data-driven projects.",
         "readMoreLink": "https://www.dicoding.com/dicodingassets/coursecertificate/e4fbf64d140b3b1fcba67dfa669a1e90f6295095/view"
-      }
+      },
+      {
+        "image": "img/cert_ml_fundamental.jpg",
+        "date": "Thursday, May 15, 2025",
+        "title": "Linear Models in Machine Learning",
+        "description": "Recognition for my ability to make model",
+        "readMoreLink": "https://digitalent.komdigi.go.id/cek-sertifikat?registrasi=19510211840-852"
+      },
     ]
   }
 
   
+
